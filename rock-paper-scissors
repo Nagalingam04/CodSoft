@@ -1,0 +1,72 @@
+import random
+
+def instructions():
+  print("Welcome to Rock-Paper-Scissor")
+  print("Instructions:")
+  print("1.There are two players. \n2.You will be playing against the computer.")
+  print("Rules:\n1.Rock beats Scissors. \n2.Scissors beats Paper. \n3.Paper beats Rock.")
+  print("Let's begin the game!")
+
+def computer_choice():
+  com_choice=random.choice(["Rock","Paper","Scissor"])
+  return com_choice
+
+def play_again(us,cs):
+  print("\nRWant to Play again(Y/N):")
+  choice=input()
+  
+  if choice == 'Y':
+    main(us,cs)
+  else:
+    return
+  
+def Player_choice():
+  print("\nChoice:\n1.Rock(R) \n2.Paper(P) \n3.Scissor(S)")
+  print("Enter your Choice(R/P/S):")
+  uc=input()
+  if uc not in ['P',"R","S"]:
+    print("Please Enter valid Choice:")
+    uc=input()
+    return uc
+  else:
+    return uc
+  
+def main(us,cs):
+  computer_score=cs
+  user_score=us
+  uc=Player_choice()
+  cc=computer_choice()
+  print(f"The Computer Choice is {cc}")
+  if uc == 'R' and cc =="Rock":
+    print("It's a Tie.")
+  elif uc == 'R' and cc =="Paper":
+    print("Computer wins!")
+    computer_score+=1
+  elif uc == 'R' and cc =="Scissor":
+    print("You win!")
+    user_score+=1
+  elif uc == 'P' and cc =="Rock":
+    print("You Win!")
+    user_score+=1
+  elif uc == 'P' and cc =="Paper":
+    print("It's a Tie.")
+  elif uc == 'P' and cc =="Scissor":
+    print("Computer wins!")
+    computer_score+=1
+  elif uc == 'S' and cc =="Scissor":
+    print("It's a Tie.")
+  elif uc == 'S' and cc =="Rock":
+    print("Computer wins!")
+    computer_score+=1
+  elif uc == 'S' and cc =="Paper":
+    print("You Win!")
+    user_score+=1
+
+  print(f"Computer Score: {computer_score}  Player Score: {user_score}")
+  play_again(computer_score,user_score)
+
+if __name__=="__main__":
+  c_s=0
+  u_s=0
+  instructions()
+  main(u_s,c_s)
